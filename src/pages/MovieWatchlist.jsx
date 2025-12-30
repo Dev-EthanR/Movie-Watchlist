@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom";
+import Header from "../components/Header";
 
 const MovieWatchlist = () => {
   return (
     <div>
-      <h1>Watchlist</h1>
-      <Link to="/">To Home</Link>
+      <Header
+        title={"My Watchlist"}
+        path={"/"}
+        pathName={"Search for movies"}
+      />
     </div>
   );
 };
