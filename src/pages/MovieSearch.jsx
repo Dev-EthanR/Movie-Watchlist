@@ -6,7 +6,9 @@ const MovieSearch = ({ watchlist, updateWatchlist }) => {
   const [data, setData] = useState([]);
   const [movie, setMovie] = useState([]);
   const [error, setError] = useState(false);
-  const URL = `http://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}&`;
+  const URL = `https://www.omdbapi.com/?apikey=${
+    import.meta.env.VITE_API_KEY
+  }&`;
   const search = (formData) => {
     setError(false);
     const query = formData.get("searchQuery");

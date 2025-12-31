@@ -6,7 +6,9 @@ import Card from "../components/Card";
 
 const MovieWatchlist = ({ watchlist, updateWatchlist }) => {
   const [wishlistMovies, setWishlistMovies] = useState([]);
-  const URL = `http://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}&`;
+  const URL = `https://www.omdbapi.com/?apikey=${
+    import.meta.env.VITE_API_KEY
+  }&`;
   useEffect(() => {
     setWishlistMovies([]);
     watchlist.forEach((id) => {
