@@ -36,7 +36,7 @@ const Card = ({ movie, updateWatchlist, watchlist }) => {
             onClick={() =>
               updateWatchlist((prev) =>
                 prev.includes(movie.imdbID)
-                  ? [prev.filter((id) => id !== movie.imdbID)]
+                  ? prev.filter((id) => id !== movie.imdbID)
                   : [...prev, movie.imdbID]
               )
             }
