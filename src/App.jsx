@@ -1,10 +1,18 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import SearchMovie from "./pages/SearchMovie";
 import MovieWatchlist from "./pages/MovieWatchlist";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [watchlist, setWatchlist] = useState([]);
+  const [watchlist, setWatchlist] = useState(() => {
+    const stored = localStorage.getItem("watchlist");
+    return stored ? JSON.parse(stored) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }, [watchlist]);
+
   return (
     <BrowserRouter>
       <Routes>
