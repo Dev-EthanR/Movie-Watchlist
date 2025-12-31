@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "../components/Header";
 import addToWishListIcon from "../assets/add.png";
+import removeFromWishListIcon from "../assets/remove.png";
 
-const MovieSearch = () => {
+const MovieSearch = ({ watchlist, updateWatchlist }) => {
   const [data, setData] = useState([]);
   const [movie, setMovie] = useState([]);
   const [error, setError] = useState(false);
@@ -143,8 +144,24 @@ const MovieSearch = () => {
                 <div className="flex gap-4 text-xs">
                   <span>{m.Runtime}</span>
                   <span>{m.Genre}</span>
-                  <button className="flex items-center gap-2 cursor-pointer">
-                    <img className="w-5" src={addToWishListIcon} />
+                  <button
+                    className="flex items-center gap-2 cursor-pointer"
+                    onClick={() =>
+                      updateWatchlist((prev) =>
+                        prev.includes(m.imdbID)
+                          ? [prev.filter((id) => id !== m.imdbID)]
+                          : [...prev, m.imdbID]
+                      )
+                    }
+                  >
+                    <img
+                      className="w-5"
+                      src={
+                        watchlist.includes(m.imdbID)
+                          ? removeFromWishListIcon
+                          : addToWishListIcon
+                      }
+                    />
                     Watchlist
                   </button>
                 </div>

@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 
-const MovieWatchlist = () => {
+const MovieWatchlist = ({ watchlist, updateWatchlist }) => {
+  console.log(watchlist);
   return (
     <div>
       <Header
