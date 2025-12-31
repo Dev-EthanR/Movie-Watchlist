@@ -8,6 +8,7 @@ const MovieWatchlist = ({ watchlist, updateWatchlist }) => {
   const [wishlistMovies, setWishlistMovies] = useState([]);
   const URL = `http://www.omdbapi.com/?apikey=${import.meta.env.VITE_API_KEY}&`;
   useEffect(() => {
+    setWishlistMovies([]);
     watchlist.forEach((id) => {
       fetch(`${URL}i=${id}`)
         .then((res) => res.json())
@@ -85,7 +86,7 @@ const MovieWatchlist = ({ watchlist, updateWatchlist }) => {
                     onClick={() =>
                       updateWatchlist((prev) =>
                         prev.includes(m.imdbID)
-                          ? [prev.filter((id) => id !== m.imdbID)]
+                          ? prev.filter((id) => id === m.imdbID)
                           : [...prev, m.imdbID]
                       )
                     }
