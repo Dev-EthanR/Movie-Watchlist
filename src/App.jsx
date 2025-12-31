@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import MovieSearch from "./pages/MovieSearch.Jsx";
+import SearchMovie from "./pages/SearchMovie";
 import MovieWatchlist from "./pages/MovieWatchlist";
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ function App() {
         <Route
           path="/"
           element={
-            <MovieSearch watchlist={watchlist} updateWatchlist={setWatchlist} />
+            <SearchMovie watchlist={watchlist} updateWatchlist={setWatchlist} />
           }
         />
         <Route
