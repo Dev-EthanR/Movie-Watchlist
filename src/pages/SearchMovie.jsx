@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "../components/Card";
 import Header from "../components/Header";
 
-const SearchMovie = ({ watchlist, updateWatchlist }) => {
+const SearchMovie = () => {
   const [data, setData] = useState([]);
   const [movie, setMovie] = useState([]);
   const [error, setError] = useState(false);
@@ -90,14 +90,7 @@ const SearchMovie = ({ watchlist, updateWatchlist }) => {
             Unable to find what you’re looking for. Please try another search.
           </h2>
         ) : (
-          movie?.map((m) => (
-            <Card
-              key={m.imdbID}
-              movie={m}
-              updateWatchlist={updateWatchlist}
-              watchlist={watchlist}
-            />
-          ))
+          movie?.map((m) => <Card key={m.imdbID} movie={m} />)
         )}
       </main>
     </>

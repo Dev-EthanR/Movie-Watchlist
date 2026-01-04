@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import addToWishListIcon from "../assets/add.png";
 import Header from "../components/Header";
 import Card from "../components/Card";
+import { WatchlistContext } from "../App";
 
-const MovieWatchlist = ({ watchlist, updateWatchlist }) => {
+const MovieWatchlist = () => {
   const [wishlistMovies, setWishlistMovies] = useState([]);
+  const { watchlist } = useContext(WatchlistContext);
+
   const URL = `https://www.omdbapi.com/?apikey=${
     import.meta.env.VITE_API_KEY
   }&`;
@@ -51,14 +54,7 @@ const MovieWatchlist = ({ watchlist, updateWatchlist }) => {
             </Link>
           </>
         ) : (
-          wishlistMovies?.map((m) => (
-            <Card
-              key={m.imdbID}
-              movie={m}
-              updateWatchlist={updateWatchlist}
-              watchlist={watchlist}
-            />
-          ))
+          wishlistMovies?.map((m) => <Card key={m.imdbID} movie={m} />)
         )}
       </main>
     </div>

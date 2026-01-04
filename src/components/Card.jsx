@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import addToWishListIcon from "../assets/add.png";
 import removeFromWishListIcon from "../assets/remove.png";
+import { WatchlistContext } from "../App";
 
-const Card = ({ movie, updateWatchlist, watchlist }) => {
+const Card = ({ movie }) => {
+  const { watchlist, setWatchlist } = useContext(WatchlistContext);
   return (
     <div className="flex gap-7 border-b-2 border-gray-200 pb-4">
       <img
@@ -34,7 +37,7 @@ const Card = ({ movie, updateWatchlist, watchlist }) => {
           <button
             className="flex items-center gap-2 cursor-pointer"
             onClick={() =>
-              updateWatchlist((prev) =>
+              setWatchlist((prev) =>
                 prev.includes(movie.imdbID)
                   ? prev.filter((id) => id !== movie.imdbID)
                   : [...prev, movie.imdbID]
